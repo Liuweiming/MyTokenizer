@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestDateTime", "TestDateTim
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Spliter", "Spliter\Spliter.vcxproj", "{97F04570-FE46-46EB-968C-A34D59E21222}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestLogLayout", "TestLogLayout\TestLogLayout.vcxproj", "{E7E12598-6446-4E2A-A0EB-2E2511753AF9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -61,29 +63,16 @@ Global
 		{97F04570-FE46-46EB-968C-A34D59E21222}.Release|x64.Build.0 = Release|x64
 		{97F04570-FE46-46EB-968C-A34D59E21222}.Release|x86.ActiveCfg = Release|Win32
 		{97F04570-FE46-46EB-968C-A34D59E21222}.Release|x86.Build.0 = Release|Win32
+		{E7E12598-6446-4E2A-A0EB-2E2511753AF9}.Debug|x64.ActiveCfg = Debug|x64
+		{E7E12598-6446-4E2A-A0EB-2E2511753AF9}.Debug|x64.Build.0 = Debug|x64
+		{E7E12598-6446-4E2A-A0EB-2E2511753AF9}.Debug|x86.ActiveCfg = Debug|Win32
+		{E7E12598-6446-4E2A-A0EB-2E2511753AF9}.Debug|x86.Build.0 = Debug|Win32
+		{E7E12598-6446-4E2A-A0EB-2E2511753AF9}.Release|x64.ActiveCfg = Release|x64
+		{E7E12598-6446-4E2A-A0EB-2E2511753AF9}.Release|x64.Build.0 = Release|x64
+		{E7E12598-6446-4E2A-A0EB-2E2511753AF9}.Release|x86.ActiveCfg = Release|Win32
+		{E7E12598-6446-4E2A-A0EB-2E2511753AF9}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 6
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://liuwiing.visualstudio.com/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = myTokenizer\\myTokenizer.vcxproj
-		SccProjectName1 = myTokenizer
-		SccLocalPath1 = myTokenizer
-		SccProjectUniqueName2 = log4cpp\\log4cpp.vcxproj
-		SccProjectName2 = log4cpp
-		SccLocalPath2 = log4cpp
-		SccProjectUniqueName3 = DateAndTime\\DateAndTime.vcxproj
-		SccProjectName3 = DateAndTime
-		SccLocalPath3 = DateAndTime
-		SccProjectUniqueName4 = TestDateTime\\TestDateTime.vcxproj
-		SccProjectName4 = TestDateTime
-		SccLocalPath4 = TestDateTime
-		SccProjectUniqueName5 = Spliter\\Spliter.vcxproj
-		SccProjectName5 = Spliter
-		SccLocalPath5 = Spliter
 	EndGlobalSection
 EndGlobal
