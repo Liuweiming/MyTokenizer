@@ -52,5 +52,4 @@ DateTime & getTime()
 	static DateTime dt;
 	dt.mark();
 	return dt;
-	// TODO: 在此处插入 return 语句
 }

@@ -13,8 +13,6 @@ properties £º
    TTCCLayout £º {[time] [proirity] [function] [message]}
    PatternLayout : customize pattern
 4. cutomize pattern : 
-   %c : category name, the length can be specified, e.g. a.b.c with %c{2} -> b.c
-   %C : class name, class1.class2.class3 with %C{2} -> class2.class3
    %d : date Format, %d{HH:mm:ss,SSS}, %d{ISO8601}, %d{ABSOLUTE}
    %F : file name
    %I : location imformation, include file name, class name, function name, line number

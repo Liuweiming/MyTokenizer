@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "LogLayout.h"
-const std::string LogLayout::SimpleLayout = "[%-5p] - %m";
-const std::string LogLayout::TTCCLayout = "%d [%-5p] %-30c - %m";
-const std::string LogLayout::FULLLayout = "%d [%-5p] %-100I - %n    %m";
+const std::string LogLayout::SimpleLayout = "[%5p] - %m";
+const std::string LogLayout::TTCCLayout = "%d [%5p] %-30c - %m";
+const std::string LogLayout::FULLLayout = "%d [%5p] %-100I - %n    %m";
 
 
 
@@ -47,16 +47,16 @@ std::stringstream LogLayoutSub::getBraceExpstd(const std::string & patten)
 	return std::move(sst);
 }
 
-std::string LogLayoutSub::getLogInfoTokens(const std::string & logInfo, Spliter<std::string> &spliter, std::size_t tokenLength)
+std::string LogLayoutDelim::getLogInfoTokens(const std::string & logInfo)
 {
 	std::string ret;
 	auto tokens = spliter.spliteRes(logInfo);
-	if (tokenLength <= 0 || tokens.size() < tokenLength)
+	if (tokenLen <= 0 || tokens.size() < tokenLen)
 	{
 		return logInfo;
 	}
-	ret += tokens[tokens.size() - tokenLength];
-	for (auto i = tokens.size() - tokenLength + 1; i != tokens.size(); ++i)
+	ret += tokens[tokens.size() - tokenLen];
+	for (auto i = tokens.size() - tokenLen + 1; i != tokens.size(); ++i)
 	{
 		ret += spliter.getDelim();
 		ret += tokens[i];
@@ -86,7 +86,6 @@ void LogLayoutSub::updateFormat()
 		{
 			return;
 		}
-		auto ind = pattenSub.find_first_of('.', 0);
 		std::stringstream sst;
 		mark = pattenSub.front();
 		if (mark == '-')
@@ -97,25 +96,28 @@ void LogLayoutSub::updateFormat()
 		{
 			formatter << std::right;
 		}
-		if (ind != std::string::npos)
+		auto ind = pattenSub.find_first_of('.', 0);
+		// get precison here
+		if (ind != pattenSub.npos)
 		{
 			sst << pattenSub.substr(ind, pattenSub.length());
 			sst >> subLength;
 			formatter << std::ios::fixed << std::setprecision(subLength);
 			sst.clear();
 			sst.str("");
-			if (mark == '-' || mark == '+' || mark == '#')
-			{
-				sst << pattenSub.substr(1, ind - 1); // like 5.6
-			}
-			else
-			{
-				sst << pattenSub.substr(0, ind);
-			}
 		}
 		else
 		{
-			sst << pattenSub; // like -5
+			ind = pattenSub.length();
+		}
+		// get fullLength here
+		if (mark == '-' || mark == '+' || mark == '#')
+		{
+			sst << pattenSub.substr(1, ind - 1); // like 5.6
+		}
+		else
+		{
+			sst << pattenSub.substr(0, ind);
 		}
 		if (!sst.str().empty())
 		{
@@ -160,7 +162,7 @@ std::string LogLayoutFile::getResult(const struct LogInfomations &logInfo)
 {
 	updateFormat();	
 	resetFormatter();
-	formatter << getLogInfoTokens(logInfo.fileName, spliter, tokenLen);
+	formatter << getLogInfoTokens(logInfo.fileName);
 	return formatter.str();
 }
 
@@ -185,7 +187,7 @@ std::string LogLayoutMeth::getResult(const struct LogInfomations &logInfo)
 {
 	updateFormat();
 	resetFormatter();
-	formatter << getLogInfoTokens(logInfo.methodName, spliter, tokenLen);
+	formatter << getLogInfoTokens(logInfo.methodName);
 	return formatter.str();
 }
 
@@ -354,14 +356,15 @@ std::string LogLayout::getResult(const struct LogInfomations &logInfo)
 LogLayoutSub * LogLayout::updateFormat(std::string::iterator & pos, std::string::const_iterator &end)
 {
 	std::string patten;
-	std::string needReadBrae = "dFIm";
+	std::string needReadBrae = "dFIM";
 	LogLayoutSub *logLaySub = nullptr;
 	bool finished = false;
 	patten.push_back(*pos);
 	++pos;
 	while (pos != end) {
 		patten.push_back(*pos);
-		if (needReadBrae.find(*pos))
+		auto nextChar = *pos;
+		if (needReadBrae.find(nextChar) != needReadBrae.npos)
 		{
 			try
 			{
@@ -377,7 +380,7 @@ LogLayoutSub * LogLayout::updateFormat(std::string::iterator & pos, std::string:
 				exit(1);
 			}
 		}
-		switch (*pos)
+		switch (nextChar)
 		{
 		case 'd':
 			logLaySub = new LogLayoutDate;

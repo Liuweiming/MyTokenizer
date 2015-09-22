@@ -20,12 +20,27 @@ the format expression are the same as java.
 class DateTime
 {
 public:
-	DateTime();
-	DateTime(const _timeb &timebuffer);
-	DateTime(const DateTime &lhs) : dateAndTime(lhs.dateAndTime), timebuffer(lhs.timebuffer), milliSecond(lhs.milliSecond), updateFlag(lhs.updateFlag), myDateFormat(DateFormat())
+	DateTime()
+	{
+		mark();
+		updateTime();
+	}
+	DateTime(const _timeb &timebuffer)
+	{
+		updateTime();
+	}
+	DateTime(const DateTime &lhs) : dateAndTime(lhs.dateAndTime), timebuffer(lhs.timebuffer), milliSecond(lhs.milliSecond), updateFlag(lhs.updateFlag)
 	{
 	}
-	~DateTime();
+	DateTime &operator=(DateTime dt)
+	{
+		swap(*this, dt);
+		return *this;
+	}
+	friend void swap(DateTime &lhs, DateTime &rhs);
+	~DateTime()
+	{
+	}
 	void mark()
 	{
 		// mark to record a time;
@@ -47,6 +62,11 @@ public:
 	{
 		updateTime();
 		return timebuffer.time - other.timebuffer.time;
+	}
+	std::pair<std::tm, std::size_t> getTime()
+	{
+		updateTime();
+		return std::pair<std::tm, std::size_t>(dateAndTime, milliSecond);
 	}
 private:
 	struct _timeb timebuffer;
@@ -326,9 +346,11 @@ public:
 			{
 				setFormat(dateF);
 			}
+			DateFormat(const DateFormat &dt) = delete;
+			DateFormat(const DateFormat &&dt) = delete;
 			void setFormat(const std::string &dateF);
+			std::string getResult(const std::tm & dateAndTime, unsigned milliSecond = 0);
 			~DateFormat() {};
-			std::string getResult(const std::tm &dateAndTime, const unsigned &milliSecond);
 			std::string formatDate(const DateTime &datetime);
 			static std::string defaultDateFormat;
 		private:
@@ -392,4 +414,3 @@ public:
 private:
 	DateFormat myDateFormat;
 };
-

@@ -21,12 +21,27 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\log4cpp\LogLayout.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\log4cpp\logProperties.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Spliter\Spliter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="unittest1.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\log4cpp\LogLayout.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\log4cpp\logProperties.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

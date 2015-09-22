@@ -48,7 +48,7 @@ public:
 protected:
 	virtual void updateFormat(); //update function
 	std::stringstream getBraceExpstd(const std::string & patten);
-	std::string getLogInfoTokens(const std::string & logInfo, Spliter<std::string>& spliter, std::size_t tokenLength);
+	
 	void resetFormatter();
 	bool update = false; // flag for this subLayout to update it's formatter;
 	std::string patten;
@@ -77,18 +77,23 @@ private:
 class LogLayoutDelim : public LogLayoutSub
 {
 public:
-	LogLayoutDelim() : spliter(delim, Spliter<std::string>::split_with_sub) {}
+	LogLayoutDelim(){}
 	LogLayoutDelim(const std::string &patt) : LogLayoutSub(patt)
 	{
-		spliter.setDelim(delim);
-		spliter.setType(Spliter<std::string>::split_with_sub);
 	}
 	virtual std::string getResult(const LogInfomations & logInfo);
 protected:
 	virtual void updateFormat();
-	std::string delim = "\\";
+	std::string getLogInfoTokens(const std::string & logInfo);
+	std::string delim;
 	std::size_t tokenLen = 0;
 	Spliter<std::string> spliter;
+	void setSpliter(const std::string &del)
+	{
+		delim = del;
+		spliter.setDelim(delim);
+		spliter.setType(Spliter<std::string>::split_with_sub);
+	}
 };
 
 class LogLayoutFile : public LogLayoutDelim
@@ -96,11 +101,11 @@ class LogLayoutFile : public LogLayoutDelim
 public:
 	LogLayoutFile()
 	{
-		delim = "\\";
+		setSpliter("\\");
 	}
 	LogLayoutFile(const std::string &patt) : LogLayoutDelim(patt)
 	{
-		delim = "\\";
+		setSpliter("\\");
 	}
 	virtual std::string getResult(const struct LogInfomations &logInfo);
 };
@@ -149,14 +154,16 @@ class LogLayoutMeth : public LogLayoutDelim
 public:
 	LogLayoutMeth()
 	{
-		delim = "::";
+		setSpliter("::");
 	}
 	LogLayoutMeth(const std::string &patt) : LogLayoutDelim(patt)
 	{
-		delim = "::";
+		setSpliter("::");
 	}
 	~LogLayoutMeth() {}
 	virtual std::string getResult(const struct LogInfomations &logInfo);
+private:
+	
 };
 
 class LogLayoutProi : public LogLayoutSub

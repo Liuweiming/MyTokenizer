@@ -2,21 +2,15 @@
 #include "DateTime.h"
 
 #include <cassert>
-DateTime::DateTime()
+
+void swap(DateTime &lhs, DateTime &rhs)
 {
-	mark();
-	updateTime();
-}
-
-DateTime::DateTime(const _timeb & timebuffer) : timebuffer(timebuffer)
-{
-	updateTime();
-}
-
-
-
-DateTime::~DateTime()
-{
+	// info that DateFormat can't been swapped, moved or copied;
+	using std::swap;
+	swap(lhs.dateAndTime, rhs.dateAndTime);
+	swap(lhs.milliSecond, rhs.milliSecond);
+	swap(lhs.timebuffer, rhs.timebuffer);
+	swap(lhs.updateFlag, rhs.updateFlag);
 }
 
 std::string DateTime::FormatDate(const std::string & dateFormat)
@@ -73,7 +67,7 @@ void DateTime::DateFormat::setFormat(const std::string & dateF)
 	}
 }
 
-std::string DateTime::DateFormat::getResult(const std::tm &dateAndTime, const unsigned &milliSecond)
+std::string DateTime::DateFormat::getResult(const std::tm &dateAndTime, unsigned milliSecond)
 {
 	std::string ret;
 	for (auto &p : dateFormateSubs)
@@ -86,7 +80,9 @@ std::string DateTime::DateFormat::getResult(const std::tm &dateAndTime, const un
 
 std::string DateTime::DateFormat::formatDate(const DateTime & datetime)
 {
-	return getResult(datetime.dateAndTime, datetime.milliSecond);
+	auto myDate = datetime;
+	myDate.updateTime();
+	return getResult(myDate.dateAndTime, myDate.milliSecond);
 }
 
 void DateTime::DateFormat::parserDateFormat()

@@ -37,13 +37,12 @@ void test3()
 	log.addAppender();
 	log.logAppenders[0].getLogProperties().logDestination = LogProperties::LogAppenderDest::FileDest;
 	log.logAppenders[0].getLogProperties().customizeFileDest("test.log");
-	log.logAppenders[0].getLogProperties().customizePatten("%d{yyyy/MMM/ddd HH:mm:ss,SSS} [%-5p] %c{2} %F %C %M %L ---- %m");
+	log.logAppenders[0].getLogProperties().customizePatten("%d{yyyy/MMM/ddd HH:mm:ss,SSS} [%5p] %F{2} %M{2} [Line %L] ---- %m");
 	log.logAppenders[1].getLogProperties().logDestination = LogProperties::LogAppenderDest::ConsoleDest;
 	testClass::testClass2 myClass;
 	for (auto i = 0; i != 30; ++i)
 	{
-		//Sleep(50);
-		//log.DEBUG("this is a test");
+		Sleep(50);
 		myClass.testMethod(log);
 	}
 	return;
