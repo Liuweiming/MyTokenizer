@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DateTime">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="DateTime::SecondSub" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DateTime.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="DateTime::YdaySub" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DateTime.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="DateTime::CommentSub" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DateTime.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="DateTime::KhourSub" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DateTime.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="DateTime::MinuteSub" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DateTime.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="DateTime::AMSub">
+        <TypeIdentifier>
+          <NewMemberFileName>DateTime.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="DateTime::numberSub" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DateTime.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="DateTime::milliSecondSub" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DateTime.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="DateTime::MdaySub" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DateTime.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="DateTime::MonthSub" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DateTime.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="DateTime::DateFormat" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DateTime.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="DateTime::WdaySub" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DateTime.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="DateTime::YearSub" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DateTime.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="DateTime::DateFormatSub" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DateTime.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="DateTime::WeekSub" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DateTime.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="DateTime::HourSub" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>DateTime.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAQIKAAAAAAAAAAAACgAAAAAEDIQQAAAAAAAAAgAA=</HashCode>
+      <FileName>DateTime.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>
